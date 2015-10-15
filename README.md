@@ -137,4 +137,37 @@ The refspecs are not enforced by any mean, nor the actuall branch names
 
 although fortunatelly this last type cannot be pushed (now) to github
 
+## working with multiple remotes
+
+Lets start with the first exercise, that will also simulate a forked repository.
+We will end with two remotes, the one that we own, and upstream, and they behave
+like a fork because the sha1 of both repositories are the same.
+
+If this were a standard feature fork, working with the our and making a pull request when
+finish will suffice. But if there are conflicts preventing the merge or we want to add
+some features developed after our fork, we must use cherry-pick, rebase or merge depending
+on our needs.
+
+The simplest case is just a conflict in the merge, that is tipically solved by merging the
+remote destination branch in our local branch, and then pushing again.
+
+    git checkout my-feature-branch
+    git fetch upstream
+    git merge upstream/master
+    # resolve your conflicts ...
+    git commit -m 'Resolve conflicts'
+    git push origin my-feature-branch
+
+and the remaining work will be done by github, gitlab or whoever your remote is hosted on.
+Although this is the standard flow when forking, when you have write access to the upstream
+repository, it is much cleaner to do the merge locally, resolve the conflicts and push the
+result
+
+    gitsync upstream master
+    git merge --no-commit my-feature-branch
+    # resolve your conflicts ...
+    git commit -m 'Resolve conflicts'
+    git push upstream master
+
+The use of cherry-pick and specially rebase are considered more advanced topics and will be described later.
 
