@@ -136,6 +136,38 @@ The refspecs are not enforced by any mean, nor the actuall branch names
 
 although fortunatelly this last type cannot be pushed (now) to github
 
+## get changes from remote
+
+As everybody knows, the way to get changes from remote is `git fetch` but, as often happens,
+everybody is wrong. That is the quick & dirty way to do it. What's wrong there? Basically,
+that history (network) gets very confusing (both for people and git itself). The visible sign
+of this are messages like _"merge staging into staging"_, and nobody could prove that the
+_spaguetti network_ is not the cause of commits dissapearance.
+
+Surprisingly, the quick & clean way is only a bit longer: `git fetch --rebase`. What is the
+difference? Directly from fetch help
+
+    More precisely, git pull runs git fetch with the given parameters and calls git merge to merge the retrieved
+    branch heads into the current branch. With --rebase, it runs git rebase instead of git merge.
+
+So, using _--rebase_ will just move your commits into the top of the remote branch, producing a
+linear history, and removing all problems.
+
+As happened wit clone, there is also a long and detailed path to do the pull. It starts by getting
+remote changes into our local copy with `git fetch origin`, and the continuation differ on the
+status of our local branch. If we have no changes and just want to sync our local branch with remote
+
+    git merge --ff-only origin/branchmame
+
+which is the only case when a raw `git pull` produces exactly the same result. If we have local commits,
+we perform a rebase with
+
+    git rebase --onto origin/branchmame HEAD~X
+
+where X can be known usually from the fetch output, but also by running `git branch -v`, that will show
+a message like '[ahead 1, behind 1]', where X is the _ahead_. But, anyway, all this guessing could be
+avoided just runnning `git rebase branchname`, that should produce the same result.
+
 ## working with multiple remotes
 
 Lets start with the first exercise, that will also simulate a forked repository.
