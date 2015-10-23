@@ -76,7 +76,7 @@ usual up to here but
 
     cd spec/fixtures/testrepo.git
     git remote -v
-    
+
 and do you remember about the usefulness of knowing where the commits are?
 
     find objects -type f | wc -l
@@ -119,7 +119,7 @@ so, cannot we create branches in our bare repository? Obviously. Yes, we can
 and we can push them with different names (again using shortened refspecs)
 
     git push origin master:master-ahead feature/branch:branch-ahead
-    
+
 ## confusing local branches
 
 The refspecs are not enforced by any mean, nor the actuall branch names
@@ -201,4 +201,25 @@ result
     git push upstream master
 
 The use of cherry-pick and specially rebase are considered more advanced topics and will be described later.
+
+## paradise in hell (workspace, stage, index, ...)
+
+Although maybe you can guess what is workspace, the other terms are less clear. So, let's start with
+a couple of surprising facts or misconceptions: 
+First of all, `git add` does not add files to the repository, but moves content into stage. 
+Then, using `git rm`, moves files from stage to workspace? Nope, it does actually remove files, but only from workspace. 
+Yes, you're missing a few commands here. Let say that _checkout_ and _reset_ are basically what you miss there, although to see all this mess in action you need to find an enterprise grade merge conflict.
+
+Basically, there are two areas in git where your files (or parts of them) can be classified. Or three
+if we consider files out of source control. Let say that stage is the area of changes ready to be
+committed, and workspace are those not yet ready. This means that if you run `git commit`, your stage
+area will be transformed into a commit (and cleaned). If you are ussed to `git commit -a`, it is like
+to run `git add` on the workspace and the commit. And running `git commit filename` will commit all
+your changes (stage+workspace) from the specified file(s).
+
+With this clear introduction in mind, lets review the commands mentioned before.
+* `git add`, does move things into stage. The misconception comes from the fact that it is the only way to put an untracked file under source control. Once a thing get added, we can perform additional changes on it, and this new content will not get commited
+* `git rm` moves files out of source control, with the side effect of actually removing them from the filesystem. If part of the file is in stage, you will need to force the removal
+* `git reset HEAD` is the command that performs the opposite of _add_, moving content out of stage area, although with _--hard_ can also rewind the file into its last committed state
+* `git checkout`, finally, is the command that you need to drop your changes in workspace, while keeping what you have in stage
 
