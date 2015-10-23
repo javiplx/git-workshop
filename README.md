@@ -11,6 +11,14 @@
 * it is possible to make commits **about** (not after) commits (annotated tags & git notes)
 
 
+## what a commit looks like
+
+## what we will see
+
+http://visualize-your-git.herokuapp.com/
+
+![Git commands](https://raw.githubusercontent.com/Feverup/git-workshop/workshop/gitcommands.png)
+
 ## git 101
 
 ### creating a repository
