@@ -17,7 +17,7 @@
 
 http://visualize-your-git.herokuapp.com/
 
-![Git commands](https://raw.githubusercontent.com/Feverup/git-workshop/workshop/gitcommands.png)
+![Git commands](http://ks301030.kimsufi.com/gitcommands-markov.png)
 
 ## git 101
 
