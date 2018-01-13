@@ -166,12 +166,12 @@ As happened wit clone, there is also a long and detailed path to do the pull. It
 remote changes into our local copy with `git fetch origin`, and the continuation differ on the
 status of our local branch. If we have no changes and just want to sync our local branch with remote
 
-    git merge --ff-only origin/branchmame
+    git merge --ff-only origin/branchname
 
 which is the only case when a raw `git pull` produces exactly the same result. If we have local commits,
 we perform a rebase with
 
-    git rebase --onto origin/branchmame HEAD~X
+    git rebase --onto origin/branchname HEAD~X
 
 where X can be known usually from the fetch output, but also by running `git branch -v`, that will show
 a message like '[ahead 1, behind 1]', where X is the _ahead_. But, anyway, all this guessing could be
