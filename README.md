@@ -54,6 +54,7 @@ or not ?
 #### manual clone
 
 A longer version, where command line arguments get into full commands [more or less]
+
     cd repoclone
     git init
     git remote add origin git@gitlab.fon.ofi:qa/asimov.git
