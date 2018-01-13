@@ -109,7 +109,7 @@ Create a new empty repo on github
 
 but only master is there, let push a few more branches
 
-    git push origin refs/heads/feature/branch:refs/remotes/origin/feature/branch
+    git push origin refs/heads/feature/branch:refs/heads/feature/branch
 
 where the refspec is a complex way to obscure a simple command which taks advantage
 of short refspec format (`git push origin feature/branch`)
