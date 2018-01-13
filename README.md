@@ -147,13 +147,13 @@ although fortunatelly this last type cannot be pushed (now) to github
 
 ## get changes from remote
 
-As everybody knows, the way to get changes from remote is `git fetch` but, as often happens,
+As everybody knows, the way to get changes from remote is `git pull` but, as often happens,
 everybody is wrong. That is the quick & dirty way to do it. What's wrong there? Basically,
 that history (network) gets very confusing (both for people and git itself). The visible sign
 of this are messages like _"merge staging into staging"_, and nobody could prove that the
 _spaguetti network_ is not the cause of commits dissapearance.
 
-Surprisingly, the quick & clean way is only a bit longer: `git fetch --rebase`. What is the
+Surprisingly, the quick & clean way is only a bit longer: `git pull --rebase`. What is the
 difference? Directly from fetch help
 
     More precisely, git pull runs git fetch with the given parameters and calls git merge to merge the retrieved
