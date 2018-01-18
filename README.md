@@ -232,3 +232,6 @@ With this clear introduction in mind, lets review the commands mentioned before.
 * `git reset HEAD` is the command that performs the opposite of _add_, moving content out of stage area, although with _--hard_ can also rewind the file into its last committed state
 * `git checkout`, finally, is the command that you need to drop your changes in workspace, while keeping what you have in stage
 
+
+[slides with updated version available](https://docs.google.com/presentation/d/1EGztKgUFgUdDIMBmCo8-TGI595ahew16SmiQGjtQB_o/edit?usp=sharing)
+
